@@ -1,0 +1,372 @@
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" lang="es">
+
+    <head>
+        <meta  http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Distribucion binomial</title>
+        <meta name="description" content="Distribucion binomial"/>
+        <meta name="author" content="JASS"/>
+        <meta name="keywords" content="Probabilidad, macro"/>
+    </head>
+    <style type=\"text/css\"> 
+      h2{color: blue;}  
+
+    </style>
+    <body>
+        <h1 align="center">Distribución binomial </h1>
+		<p><font size="3" face="Comic Sans MS,arial,verdana">Presentado por Jonathan Andres Santos Solórzano (20182020074)</font></p>
+		<p><font size="3" face="Comic Sans MS,arial,verdana">Estudiante de la Universidad Distrital Francisco Jose de Caldas, Bogotá D.C</font></p>
+        <marquee><font size="3" face="Comic Sans MS,arial,verdana">Distribución binomial</font></marquee>
+		
+        <table align="left" width="100%">
+            <tr>
+                <td>
+					<h2>Ejercicio propuesto</h2>
+					
+					<aside>  
+					<p><font size="3" face="Comic Sans MS,arial,verdana">Tomado de:</p>
+					<cite>Walpole, R. E. (2012). Probabilidad y Estadística para Ingeniería y Ciencias (9.a ed.). PEARSON EDUCACION.Ejercicio 5,28, p.151,</cite>  
+					</aside>
+					<p ><font size="3" face="Comic Sans MS,arial,verdana">De acuerdo con un estudio publicado por un grupo de
+					sociólogos de la Universidad de Massachusetts,<br>
+					aproximadamente <q><i>p</i></q> de los consumidores de Valium
+					en el estado de Massachusetts empezaron <br> a consumirlo a
+					causa de problemas psicológicos.<br> Calcule la probabilidad 
+					de que entre los siguientes <q> <i>n</i></q> consumidores entrevistados de este estado. 
+					<br>
+					Exactamente <q><i>x</i></q> comenzaron a consumir Valium por problemas psicológicos.</font>
+					</p>
+				</td>
+				
+			</tr>
+		</table>
+		
+        <table align="left" width="100%"  cellpadding="2" border="4">
+            <tr>
+                <td bgcolor="#F1E4E1">
+                    <h3>¿Que es una distribución binomial?</h3>
+                    <p ><font size="3" face="Comic Sans MS,arial,verdana">Una distribución binomial es una distribución de probabilidad <br> discreta que 
+                         describe el número de éxitos al realizar n experimentos  <br> o ensayos independientes entre sí, 
+                          de una variable aleatoria.</font>
+                    </p> 
+					<p><font size="3" face="Comic Sans MS,arial,verdana"> Puede ver mas en: .</font> </p>
+                    <a href="https://economipedia.com/definiciones/distribucion-binomial.html ">https://economipedia.com/definiciones/distribucion-binomial.html  </a>
+                </td>
+                <td>
+                    <p> <font size="4" face="Comic Sans MS,arial,verdana">
+                        Formula para resolver problemas de distribución binomial: 
+                    </font>         
+                    </p>
+                    <span style="border-image: initial; border: 3px solid blue;">
+                    <img src="Formula.PNG"/>
+                    </span>
+					    <p><font size="3" face="Comic Sans MS,arial,verdana"> p, probabilidad de exito del estudio.</font> </p>
+						<p><font size="3" face="Comic Sans MS,arial,verdana"> n, la cantidad total de ensayos o experimentos.</font></p>
+						<p><font size="3" face="Comic Sans MS,arial,verdana"> x, la cantidad de exitos del estudio.</font>  </p>
+						<p><font size="3" face="Comic Sans MS,arial,verdana"> q, probabilidad de fracaso del estudio (1-p).</font> </p>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      
+    
+
+
+        <form name="valida" action="" target="request" onsubmit="validaVacio()">
+        <table width="100%" >
+            <tr>
+			
+                <td>
+                    <table align="center" width="100%"  cellpadding="1" border="4">
+                        <tr>
+                            <p><font size="4" face="Comic Sans MS,arial,verdana">Ingrese los datos del problema:</font></p>
+                            <td><font size="3" face="Comic Sans MS,arial,verdana">p:</font>
+                            </td>
+                            <td>
+                            <input name="n1" type="number" id="n1"  placeholder="0.00" min="0" step="0.01" max="1" maxlength="4"  onchange="Validateprob('n1')" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><font size="3" face="Comic Sans MS,arial,verdana">n:</font>
+                            </td>
+                            <td>
+                                <input type="number" name="n2"  id="n2" min="0"   step="1" size="4" maxlength="5" placeholder="1" maxlength="3" onchange="esEntero('n2')" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><font size="3" face="Comic Sans MS,arial,verdana">x:</font>
+                            </td>
+                            <td>
+                                <INPUT type="number" name="n3"  id="n3" min="0"   step="1" size="4" maxlength="5" placeholder="1"  maxlength="3" onchange="esEntero1('n3')" required >
+                            </td>
+                        </tr>
+                     
+                        <tr>
+                            <td colspan="2">
+                                <input name="Calcular" type="button" onClick="valor()" value="Calcular" />
+                                <input type="reset" value="Borrar" onClick="reset()">
+                            </td>
+                            </tr>
+                    </table>
+                </td>
+                <td>
+				    <font size="3" face="Comic Sans MS,arial,verdana">Diagrama de probabilidades p vs q:</font>
+                    <canvas id="myChart"></canvas>
+					<br>
+                </td>
+            </tr>
+        </table>     
+		 <br>
+		 <br>
+		<font size="3" face="Comic Sans MS,arial,verdana">Resultado distribución binomial:</font>
+		<table >
+		    <tr>
+			    <td>
+				    <table align="center" width="100%"  cellpadding="1" border="4">
+                        <tr>
+                            <td><font size="3" face="Comic Sans MS,arial,verdana">n:</font>
+                            </td>
+                            <td>
+                                <input type="text" id="n" readonly size="4" maxlength="5"></input>
+                           </td>
+                        </tr>
+                         <tr>
+                            <td><font size="3" face="Comic Sans MS,arial,verdana">x:</font>
+                            </td>
+                            <td>
+                                <input type="text" id="x" readonly size="4" maxlength="5"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><font size="3" face="Comic Sans MS,arial,verdana">p:</font>
+                            </td>
+                            <td>
+                                <input type="text" id="p" readonly size="4" maxlength="5"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><font size="3" face="Comic Sans MS,arial,verdana">q:</font>
+                            </td>
+                            <td>
+                                <input type="text" id="q" readonly size="4" maxlength="5"></input>
+                            </td>
+                        </tr>
+						<tr>
+                            <td><font size="3" face="Comic Sans MS,arial,verdana">Resultado</font>
+                            </td>
+                            <td>
+                                <input type="text" id="resultado" readonly size="4" maxlength="5">=</input> 
+                                <input type="text" id="resultado1" readonly size="4" maxlength="5"> % </input>
+                            </td>
+                        </tr>
+				    </table>
+				</td>
+				<td>
+				<font size="3" face="Comic Sans MS,arial,verdana">Diagrama resultado distribución binomial:</font>
+				<canvas id="myChart1"></canvas>
+				</td>
+            </tr>
+		</table>
+        </form> 
+
+        
+        <script src="js/chart.js"></script>
+    
+        <iframe name="request" style="display: none;">
+            <div id="response">
+            </div>
+        </iframe>
+        <script>
+            function valor() 
+            { 
+			
+                var p = document.getElementById("n1").value;
+                var n = document.getElementById("n2").value;
+                var x = document.getElementById("n3").value;
+                document.getElementById("p").value=p;
+                var q = 1-parseFloat(p);
+                document.getElementById("q").value=q;
+                document.getElementById("n").value=n;
+                document.getElementById("x").value=x;
+                var p1= parseFloat(p);
+                var q1= parseFloat(q);
+                var x1= parseInt(x);
+                var n1= parseInt(n);
+                var total = parseInt(1); 
+			
+            	for (i=1; i<=n1; i++)
+                {
+    	    	    total = total * i; 
+            	}
+               
+                var total1 = parseInt(1); 
+            	for (i=1; i<=x1; i++) 
+                {
+    	    	    total1 = total1 * i; 
+            	}
+
+                var m = n1-x1;
+                var total2 = parseInt(1);
+                if (m>2)
+                {
+                    for(i=1; i<=m; i++)
+                    {
+                        total2=total2*i;
+                    }
+                }
+                else 
+                {
+                    total2=1;
+                }
+				
+                var combin=(total)/(total1*total2)
+                var resultado = (combin*(Math.pow(p1, x1))*(Math.pow(q1,(n1-x1))));
+                document.getElementById("resultado").value = resultado;
+                document.getElementById("resultado1").value = resultado*100
+                var ctx = document.getElementById('myChart').getContext('2d');
+				var ctx1 = document.getElementById('myChart1').getContext('2d');
+                var chart = new Chart(ctx, {
+                type: 'pie',
+                data:{
+	            datasets: [{
+	           	data: [p1,q1],
+	        	backgroundColor: ['#42a5f5', 'red'],
+	        	label: 'Probabilidad'}],
+	        	labels: ['p','q']},
+                options: {responsive: true}
+                });
+				
+				var ress = document.getElementById("resultado").value;
+                document.getElementById("resultado").value=ress;
+                var res = 1-parseFloat(ress);
+      
+                var chart1 = new Chart(ctx1, {
+                type: 'pie',
+                data:{
+	            datasets: [{
+	           	data: [resultado,res],
+	        	backgroundColor: ['#42a5f5', 'red'],
+	        	label: 'Probabilidad'}],
+	        	labels: ['Resultado','res']},
+                options: {responsive: true}
+                });
+            }
+			function validaVacio() {
+			var nn = document.getElementById("n1").value;
+            if (nn.length == 0) {
+            alert('Debe ser un numero mayor que 0 y menor que 1');
+			return false;
+        }
+        return true;
+    
+        }
+            
+            function reset()
+            {
+                document.getElementById("n1").value="";
+                document.getElementById("n2").value="";
+                document.getElementById("n3").value="";
+                document.getElementById("resultado").value="";
+                document.getElementById("q").value="";
+                document.getElementById("p").value="";
+                document.getElementById("n").value="";
+                document.getElementById("x").value="";
+            }
+
+            function Validateprob(_id)
+            {
+                var amount = document.getElementById(_id).value;
+                console.log(amount);  
+                var patron = /^(\d+(.{1}\d{1,2})?)$/;
+                if (document.getElementById('n1').value>=1 || document.getElementById('n1').value<=0)
+                {
+                    window.alert('Debe ser un numero mayor que 0 y menor que 1');
+                    document.getElementById('n1').focus();
+                    document.getElementById('n1').value="0.00";
+                    return false;
+                }
+                else if(!patron.test(amount))
+                {
+                    window.alert('cantidad ingresada incorrectamente, debe ingresar un numero mayor que 0 y menor que 1');
+                    document.getElementById('n1').focus();
+                    document.getElementById('n1').value="0.00";
+                    return false;
+                }
+                else
+                return true;
+            }
+
+            function esEntero(_id1)
+            {
+                var amount1 = document.getElementById(_id1).value;
+                console.log(amount1);  
+                if (document.getElementById('n2').value<1)
+                {
+                    window.alert('Debe ser un numero entero mayor que 1');
+                    document.getElementById('n2').focus();
+                    document.getElementById('n2').value="1";
+                    return false;
+                }
+                else if (parseInt(document.getElementById('n3').value)>parseInt(document.getElementById('n2').value))
+                {
+                    window.alert('Debe ser un numero mayor o igual a la cantidad  de casos');
+                    document.getElementById('n2').focus();
+                    document.getElementById('n2').value="1";
+                    return false;
+                }
+                
+               
+                else if (amount1 % 1 == 0)
+                {
+                   
+                   return true;
+
+                }
+                else{
+                    window.alert ("No es un numero entero");
+                   document.getElementById('n2').focus();
+                   document.getElementById('n2').value="1";
+                return false;
+                }
+                
+            }
+            function esEntero1(_id2)
+            {
+                var amount2 = document.getElementById(_id2).value;
+                console.log(amount2);  
+                if (document.getElementById('n3').value<1)
+                {
+                    window.alert('Debe ser un numero entero mayor que 1');
+                    document.getElementById('n3').focus();
+                    document.getElementById('n3').value="1";
+                    return false;
+                }
+                else if (parseInt(document.getElementById('n3').value)>parseInt(document.getElementById('n2').value))
+                {
+                    window.alert('Debe ser un numero menor al estudiado');
+                    document.getElementById('n3').focus();
+                    document.getElementById('n3').value="1";
+                    return false;
+                }
+                else if (amount2 % 1 == 0)
+                {
+                   
+                   return true;
+
+                }
+                else{
+                    window.alert ("No es un numero entero");
+                   document.getElementById('n3').focus();
+                   document.getElementById('n3').value="1";
+                return false;
+                }
+            }
+
+        </script>
+    </body>
+</html>
+
